@@ -3,19 +3,31 @@
     <div class="home-card  p-5 card align-items-center shadow rounded elevation-3">
       <img class="bg-img" src="https://em-content.zobj.net/source/twitter/348/mushroom_1f344.png" alt="tree">
       <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue miner
+        {{ totalShroom }}
       </h1>
-      <button>pick</button>
-      <button>picker</button>
-      <button>maxpick</button>
+      <button @click="pickShroom()" class="btn btn-warning">{{ pickAmount }}</button>
     </div>
   </main>
 </template>
 
 <script>
+import { computed, ref } from 'vue';
 export default {
   setup() {
+    const totalShroom = ref(0)
+    const pickAmount = ref(1)
+
+    function pickShroom() {
+      totalShroom.value += pickAmount.value
+    }
+    function upgradePick(amount) {
+      pickAmount.value += amount
+    }
     return {
+      totalShroom,
+      pickAmount,
+      pickShroom,
+      upgradePick
 
     }
   }
