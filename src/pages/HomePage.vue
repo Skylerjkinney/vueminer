@@ -12,11 +12,11 @@
 
 <script>
 import { computed, ref } from 'vue';
+import { AppState } from '../AppState';
 export default {
   setup() {
     const totalShroom = ref(0)
-    const pickAmount = ref(1)
-
+    const pickAmount = AppState.pickAmount
     function pickShroom() {
       totalShroom.value += pickAmount.value
     }
